@@ -5,7 +5,6 @@ const {BadRequestError, CustomError} = require("../error");
 
 
 const createJob = async (req, res, next) => {
-    // console.log(req.user);
     req.body.createdBy = req.user.userId;
     const job = await Job.create(req.body);
     res.status(StatusCodes.CREATED).json(job);
