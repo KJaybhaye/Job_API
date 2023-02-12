@@ -21,7 +21,8 @@ const getOne = async (req, res, next) => {
     // simialarly params => {id:jobId} = {id,...} , so id = id and then id => jobId
     const {user:{userId}, params:{id:jobId}} = req;
     const job = await Job.find({_id:jobId, createdBy:userId});
-    if(!job){
+    console.log(job);
+    if(!job || job.length === 0){
         throw new CustomError(`no job with id ${jobId}`, StatusCodes.NOT_FOUND);
     }
     res.status(StatusCodes.OK).json(job);
