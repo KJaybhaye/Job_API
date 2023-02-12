@@ -44,8 +44,8 @@ app.get("/", (req, res) => {
 });
 
 
-app.use("/jobs",authUser, jobRouter);
-app.use("/auth", authRouter);
+app.use("/api/v1/jobs",authUser, jobRouter);
+app.use("/api/v1/auth", authRouter);
 
 
 app.use(notFound);
